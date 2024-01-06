@@ -4,11 +4,14 @@
     <h1>Home Page</h1>
 
     {% for list in all_list %}
-        <p>
-            <a href="{% url 'show_list' list.id %}">{{ list.name }}</a>
-            <a href="{% url 'edit_list' list.id %}"><button class="btn btn-warning">Edit List</button></a>
-            <a href="{% url 'add_item' list.id %}"><button class="btn btn-light">Add Item</button></a>
-        </p>
+        <div class="row">
+            <div class="col-6 col-sm-3"><a href="{% url 'show_list' list.id %}">{{ list.name }}</a></div>
+            <div class="col-6 col-sm-3">
+                <a href="{% url 'edit_list' list.id %}"><button class="btn-sm btn-warning">Edit List</button></a>
+                <a href="{% url 'add_item' list.id %}"><button class="btn-sm btn-light">Add Item</button></a>
+            </div>
+        </div>
+
     {% endfor %}
 
     <a href="{% url 'create_list' %}"><button class="btn btn-primary">Create New List</button></a>
