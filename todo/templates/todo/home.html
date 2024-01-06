@@ -1,5 +1,9 @@
 {% extends 'todo/base.html' %}
 
 {% block content %}
-<h1>Home Page</h1>
+    <h1>Home Page</h1>
+
+    {% for list in all_list %}
+        <a href="{% url 'show_list' list.id %}"><p>{{ list.name }}</p></a>
+    {% endfor %}
 {% endblock %}

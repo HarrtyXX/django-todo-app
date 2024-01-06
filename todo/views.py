@@ -5,7 +5,10 @@ from .forms import *
 # Create your views here.
 
 def home(request):
-    return render(request, 'todo/home.html')
+    all_list = ToDoList.objects.all()
+    
+    context = {"all_list": all_list}
+    return render(request, 'todo/home.html', context)
 
 
 def show_list(request, id):
