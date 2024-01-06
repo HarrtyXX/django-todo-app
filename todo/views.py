@@ -60,3 +60,30 @@ def add_item(request, id):
 
     context = {"form": form, "id": id}
     return render(request, 'todo/add_item.html', context)
+
+
+
+def edit_item(request, id):
+    item = Item.objects.get(id=id)
+    list_id = item.list.id
+
+    if request.method == "POST":
+        form = UpdateItemForm(request.POST, instance = item)
+        if form.is_valid:
+            form.save()
+            return redirect("show_list", id=list_id)
+    else:
+        form = UpdateItemForm(instance=item)
+
+
+    context = {"form":form}
+    return render(request, "todo/edit_item.html", context)
+
+
+def delete_item(request, id):
+    item = Item.objects.get(id=id)
+    list_id = item.list.id
+
+    item.delete()
+    
+    return redirect("show_list", id=list_id)

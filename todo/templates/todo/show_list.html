@@ -4,7 +4,13 @@
     <h1 class="text-center">{{list.name}}</h1>
 
     {% for item in list.item_set.all %}
-        <p>{{ item.text }}</p>
+        <div class="row">
+            <div class="col-6 col-sm-3">{{  item.text }}</div>
+            <div class="col-6 col-sm-3">
+                <a href="{% url 'edit_item' item.id %}"><button class="btn-sm btn-warning">Edit Item</button></a>
+                <a href="{% url 'delete_item' item.id %}"><button class="btn-sm btn-danger">Delete Item</button></a>
+            </div>
+        </div>
     {% endfor %}
     
     <a href="{% url 'edit_list' list.id %}"><button class="btn btn-primary">Edit List</button></a>

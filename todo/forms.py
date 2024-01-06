@@ -18,3 +18,9 @@ class AddItemForm(ModelForm):
     class Meta:
         model = Item
         fields = "__all__"
+
+
+class UpdateItemForm(ModelForm):
+    class Meta:
+        model = Item
+        fields = ["text"]
