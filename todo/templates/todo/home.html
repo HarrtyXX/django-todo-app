@@ -4,6 +4,12 @@
     <h1>Home Page</h1>
 
     {% for list in all_list %}
-        <a href="{% url 'show_list' list.id %}"><p>{{ list.name }}</p></a>
+        <p>
+            <a href="{% url 'show_list' list.id %}">{{ list.name }}</a>
+            <a href="{% url 'edit_list' list.id %}"><button class="btn btn-warning">Edit List</button></a>
+            <a href="{% url 'add_item' list.id %}"><button class="btn btn-light">Add Item</button></a>
+        </p>
     {% endfor %}
+
+    <a href="{% url 'create_list' %}"><button class="btn btn-primary">Create New List</button></a>
 {% endblock %}

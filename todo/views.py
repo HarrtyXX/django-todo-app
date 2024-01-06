@@ -11,6 +11,20 @@ def home(request):
     return render(request, 'todo/home.html', context)
 
 
+def create_list(request):
+    if request.method == "POST":
+        form = CreateListForm(request.POST)
+        if form.is_valid:
+            form.save()
+            return redirect("home")
+    else:
+        form = CreateListForm()
+
+
+    context = {"form": form}
+    return render(request, 'todo/create_list.html', context)
+
+
 def show_list(request, id):
     todo_list = ToDoList.objects.get(id=id)
 
