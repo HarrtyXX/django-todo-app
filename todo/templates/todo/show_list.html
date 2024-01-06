@@ -1,0 +1,12 @@
+{% extends "todo/base.html"%}
+
+{% block content %}
+    <h1 class="text-center">{{list.name}}</h1>
+
+    {% for item in list.item_set.all %}
+        <p>{{ item.text }}</p>
+    {% endfor %}
+    
+    <a href="{% url 'edit_list' list.id %}"><button class="btn btn-primary">Edit List</button></a>
+    <a href="{% url 'add_item' list.id %}"><button class="btn btn-primary">Add Item</button></a>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <button type="submit" class="btn btn-success">Add Item</button>
+    </form>
+{% endblock %}

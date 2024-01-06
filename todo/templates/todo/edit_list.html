@@ -1,11 +1,10 @@
 {% extends "todo/base.html"%}
 
 {% block content %}
-    <h1 class="text-center">{{list.name}}</h1>
     <form action="" method="POST">
         {% csrf_token %}
         {{form.as_p}}
         
-        <button type="submit">Save</button>
+        <button type="submit" class="btn btn-success">Save</button>
     </form>
 {% endblock %}
