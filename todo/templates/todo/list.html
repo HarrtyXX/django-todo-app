@@ -2,9 +2,10 @@
 
 {% block content %}
     <h1 class="text-center">{{list.name}}</h1>
-    <ul>
-        {% for item in list.item_set.all %}
-        <h3>{{item.text}}</h3>
-    {% endfor %}
-    </ul>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        
+        <button type="submit">Save</button>
+    </form>
 {% endblock %}

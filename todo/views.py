@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import ToDoList
+from .forms import *
 
 # Create your views here.
 
@@ -8,7 +9,14 @@ def home(request):
 
 
 def show_list(request, id):
-    list = ToDoList.objects.get(id=id)
+    todo_list = ToDoList.objects.get(id=id)
 
-    context = {"list":list}
+    if request.method == "POST":
+        form = UpdateListForm(request.POST, instance=todo_list)
+        if form.is_valid:
+            form.save()            
+    else:
+        form = UpdateListForm(instance=todo_list)
+
+    context = {"form":form}
     return render(request, 'todo/list.html', context)
